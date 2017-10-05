@@ -21,10 +21,10 @@ $(document).ready(function () {
         },
         rowHover: false,
         columns: [
-            { field: "time", title: "Time1", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
-            { field: "ambTemp", title: "Ambient Temp1", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
-            { field: "avgTemp", title: "Average Temp1", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
-            { field: "message", title: "Message1", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
+            { field: "time", title: "Time Of Reading", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+            { field: "intTemp", title: "Internal Temperature", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+            { field: "flow", title: "Daily Flow", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+            { field: "reverseFlow", title: "Daily Reverse Flow", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
         ]
     });
 
@@ -186,7 +186,7 @@ $(document).ready(function () {
 			}
 			else {
 				var obj = JSON.parse(message.data);
-				if(!obj.ReceiveTime || !obj.Parameters[0].Value || !obj.Parameters[1].Value || !obj.Parameters[2].Value || !obj.Parameters[3].Value || !obj.Parameters[4].Value) {
+				if(!Obj.timeOfReading || !Obj.internalTemperature || !Obj.dailyFlow || !Obj.dailyReverseFlow || !obj.ReceiveTime || !obj.Parameters[0].Value || !obj.Parameters[1].Value || !obj.Parameters[2].Value || !obj.Parameters[3].Value || !obj.Parameters[4].Value) {
 					return;
 				}
 				
@@ -225,18 +225,18 @@ $(document).ready(function () {
 							tableData[i]= tableData[i+1];
 						}
 						tableData[4]={
-							time: obj.ReceiveTime,
-							ambTemp: ambTemperature,
-							avgTemp: avgTemperature,
-							message: thresholdMsg
+							time: obj.timeOfReading,
+							intTemp: obj.internalTemperature,
+							flow: obj.internalTemperature,
+							reverseFlow: obj.dailyReverseFlow
 						};
 					}
 					else{
 						tableData.push({
-							time: obj.ReceiveTime,
-							ambTemp: ambTemperature,
-							avgTemp: avgTemperature,
-							message: thresholdMsg
+							time: obj.timeOfReading,
+							intTemp: obj.internalTemperature,
+							flow: obj.internalTemperature,
+							reverseFlow: obj.dailyReverseFlow
 						});
 					}
 					noOfTestFailed++;
