@@ -21,10 +21,10 @@ $(document).ready(function () {
         },
         rowHover: false,
         columns: [
-            { field: "time", title: "Time", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
-            { field: "ambTemp", title: "Ambient Temp", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
-            { field: "avgTemp", title: "Average Temp", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
-            { field: "message", title: "Message", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
+            { field: "time", title: "Time1", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+            { field: "ambTemp", title: "Ambient Temp1", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+            { field: "avgTemp", title: "Average Temp1", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+            { field: "message", title: "Message1", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
         ]
     });
 
