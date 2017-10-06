@@ -168,9 +168,29 @@ $(document).ready(function () {
 						});
 						
 					
-			tableDataReverse = tableData.slice(0);			
+			tableDataReverse = tableData.slice(0);		
+
+
+			$("#grid").shieldGrid({
+            dataSource: {
+				data: tableDataReverse
+			},
+			events: {
+                dataBound: gridDataBound
+            },
+			rowHover: false,			
+            scrolling: {
+                virtual: true
+            },
+            sorting: true,
+            columnReorder: true,
+            columns: [
+                { field: "key", title: "Key" },
+                { field: "value", title: "Value" }
+            ]
+			});
 		
-			refreshGird();
+			//refreshGird();
 			}
 		catch (err) {
 		  console.error(err);
