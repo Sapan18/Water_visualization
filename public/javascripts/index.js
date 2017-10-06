@@ -46,6 +46,9 @@ $(document).ready(function () {
             dataSource: {
 				data: tableDataReverse
 			},
+			events: {
+                dataBound: gridDataBound
+            },
 			rowHover: false,			
             scrolling: {
                 virtual: true
