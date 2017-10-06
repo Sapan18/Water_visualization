@@ -160,7 +160,7 @@ $(document).ready(function () {
 					
 			tableDataReverse = tableData.slice(0);		
 
-			
+			$("#grid").remove();
 			$("#grid").shieldGrid({
             dataSource: {
 				data: tableDataReverse
