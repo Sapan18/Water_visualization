@@ -42,7 +42,16 @@ $(document).ready(function () {
                 }]
             });
 	
-	$("#grid").shieldGrid({})
+	$("#grid").shieldGrid({
+		rowHover: false,			
+            scrolling: {
+                virtual: true
+            },
+            sorting: true,
+            columnReorder: true,
+			columns: [          
+            ]
+	})
 			
 			
 	//styling table (assigning red/green colour)
