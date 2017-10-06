@@ -2,6 +2,8 @@ $(document).ready(function () {
 	
 	//variables declaration
 	var tableData=[], tableDataReverse=[];
+	var pressure=[], pressurerev=[];
+	
 	
 	$("#chart").shieldChart({
                 theme: "light",
@@ -29,7 +31,7 @@ $(document).ready(function () {
                 dataSeries: [{
                     seriesType: "bar",
                     collectionAlias: "Pressure",
-                    data: [parseInt(obj.pressure[0].Value, 5), 452, 266, 151, 158, 346]
+                    data: pressurerev
                 }, {
                     seriesType: "bar",
                     collectionAlias: "Temperature",
@@ -40,6 +42,7 @@ $(document).ready(function () {
                     data: [152, 234, 123, 348]
                 }]
             });
+	
 			
 	$("#grid").shieldGrid({
             dataSource: {
@@ -144,7 +147,28 @@ $(document).ready(function () {
 							value: obj.eventTime
 						});
 						
-					
+						pressure.push({
+							parseInt("453")
+						});
+						pressure.push({
+							parseInt("452")
+						});
+						pressure.push({
+							parseInt("451")
+						});
+						pressure.push({
+							parseInt("450")
+						});
+						pressure.push({
+							parseInt("449")
+						});
+						pressure.push({
+							parseInt("448")
+						});
+						
+						
+			pressurerev = pressure.slice(0)	;
+			pressurerev.reverse;
 			tableDataReverse = tableData.slice(0);
 			tableDataReverse.reverse();
 		
