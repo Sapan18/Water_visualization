@@ -57,6 +57,16 @@ $(document).ready(function () {
                 { field: "value", title: "Value" }
             ]
         });
+		
+	//updating table (live)
+    function refreshGird() {
+        var grid = $("#grid").swidget(),
+            initialOptions = grid.initialOptions;
+        initialOptions.dataSource = {
+            data: tableDataReverse
+        };
+        grid.refresh(initialOptions);
+    }
 			
 	//styling table (assigning red/green colour)
 	function gridDataBound(e) {
@@ -72,25 +82,6 @@ $(document).ready(function () {
             }
         }
     }
-		
-	if(tableData.length == 5){
-						for(var i=0; i<(tableData.length)-1; i++){
-							tableData[i]= tableData[i+1];
-						}
-						tableData[4]={
-							key: "internalTemperature",
-							value: "128"
-						};
-					}
-					else{
-						tableData.push({
-							key: "internalTemperature",
-							value: "128"
-						});
-					}	
-					
-		tableDataReverse = tableData.slice(0);
-		tableDataReverse.reverse();
 		
 		
 	//websocket connection
@@ -174,10 +165,9 @@ $(document).ready(function () {
 						});
 						
 					
-			tableDataReverse = tableData.slice(0);
-			tableDataReverse.reverse();
+			tableDataReverse = tableData.slice(0);			
 		
-			//refreshGird();
+			refreshGird();
 			}
 		catch (err) {
 		  console.error(err);
