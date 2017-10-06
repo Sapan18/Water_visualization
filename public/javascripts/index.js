@@ -29,7 +29,7 @@ $(document).ready(function () {
                 dataSeries: [{
                     seriesType: "bar",
                     collectionAlias: "Pressure",
-                    data: [123, 452, 266, 151, 158, 346]
+                    data: [parseInt(obj.pressure[0].Value, 5), 452, 266, 151, 158, 346]
                 }, {
                     seriesType: "bar",
                     collectionAlias: "Temperature",
