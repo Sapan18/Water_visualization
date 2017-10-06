@@ -189,7 +189,7 @@ $(document).ready(function () {
 				if(!obj.internalTemperature || !obj.ReceiveTime || !obj.Parameters[0].Value || !obj.Parameters[1].Value || !obj.Parameters[2].Value || !obj.Parameters[3].Value || !obj.Parameters[4].Value) {
 					return;
 				}
-				
+				console.log("New value : " + obj.internalTemperature);
 				//time data to show in line chart
 				timeData.push(obj.ReceiveTime);
 				
