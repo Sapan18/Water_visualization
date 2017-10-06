@@ -144,19 +144,10 @@ $(document).ready(function () {
 			tableDataReverse = tableData.slice(0);		
 
 			
-			
-		catch (err) {
-		  console.error(err);
-		}
-	}
-	
-	$("#grid").shieldGrid({
+			$("#grid").shieldGrid({
             dataSource: {
 				data: tableDataReverse
 			},
-			events: {
-                dataBound: gridDataBound
-            },
 			rowHover: false,			
             scrolling: {
                 virtual: true
@@ -170,4 +161,8 @@ $(document).ready(function () {
 			});	
 			
 			}
+		catch (err) {
+		  console.error(err);
+		}
+	}
 });
