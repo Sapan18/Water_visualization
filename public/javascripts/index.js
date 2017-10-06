@@ -42,7 +42,7 @@ $(document).ready(function () {
                 }]
             });
 	
-	
+	$("#grid").shieldGrid({})
 			
 			
 	//styling table (assigning red/green colour)
