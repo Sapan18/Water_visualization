@@ -2,7 +2,46 @@ $(document).ready(function () {
 	
 	//variables declaration
 	var tableData=[], tableDataReverse=[];
-			
+	
+	//Display empty chart initially
+	$("#chart").shieldChart({
+                theme: "light",
+                exportOptions: {
+                    image: false,
+                    print: false
+                },
+                primaryHeader: {
+                    text: "Pressure, termperature and vibration statistics over six interval"
+                },
+                zoomMode: "xy",
+                seriesSettings: {
+                    bar: {
+                        barOffset: 0
+                    }
+                },
+                axisX: {
+                    categoricalValues: ["1st", "2nd", "3rd", "4th", "5th", "6th"]
+                },
+                axisY: {
+                    title: {
+                        text: "Value statistics"
+                    }
+                },
+                dataSeries: [{
+                    seriesType: "bar",
+                    collectionAlias: "Pressure",
+                    data: [0, 0, 0, 0, 0, 0]
+                }, {
+                    seriesType: "bar",
+                    collectionAlias: "Temperature",
+                    data: [0, 0, 0, 0, 0, 0]
+                }, {
+                    seriesType: "bar",
+                    collectionAlias: "Vibration",
+                    data: [0, 0, 0, 0]
+                }]
+            });
+	
 	$("#grid").shieldGrid({
             dataSource: {
 				data: tableDataReverse
@@ -93,15 +132,15 @@ $(document).ready(function () {
                 dataSeries: [{
                     seriesType: "bar",
                     collectionAlias: "Pressure",
-                    data: [parseInt(obj.pressure[0].Value, 5), parseInt(obj.pressure[1].Value, 5), parseInt(obj.pressure[2].Value, 5), parseInt(obj.pressure[3].Value, 5), parseInt(obj.pressure[4].Value, 5), parseInt(obj.pressure[5].Value, 5)]
+                    data: [parseInt(obj.pressure[0].Value), parseInt(obj.pressure[1].Value), parseInt(obj.pressure[2].Value), parseInt(obj.pressure[3].Value), parseInt(obj.pressure[4].Value), parseInt(obj.pressure[5].Value)]
                 }, {
                     seriesType: "bar",
                     collectionAlias: "Temperature",
-                    data: [72, 90, 84, 78, 67, 83]
+                    data: [parseInt(obj.temp[0].Value), parseInt(obj.temp[1].Value), parseInt(obj.temp[2].Value), parseInt(obj.temp[3].Value), parseInt(obj.temp[4].Value), parseInt(obj.temp[5].Value)]
                 }, {
                     seriesType: "bar",
                     collectionAlias: "Vibration",
-                    data: [152, 234, 123, 348]
+                    data: [parseInt(obj.vibration[0].Value), parseInt(obj.vibration[1].Value), parseInt(obj.vibration[2].Value), parseInt(obj.vibration[3].Value)]
                 }]
             });
 						
