@@ -41,21 +41,6 @@ $(document).ready(function () {
                     data: [0, 0, 0, 0]
                 }]
             });
-	
-	$("#grid").shieldGrid({
-            dataSource: {
-				data: tableDataReverse
-			},
-			events: {
-                dataBound: gridDataBound
-            },
-			rowHover: false,			
-            scrolling: {
-                virtual: true
-            },
-            sorting: true,
-            columnReorder: true,            
-        });
 			
 			
 	//styling table (assigning red/green colour)
