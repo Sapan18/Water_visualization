@@ -30,7 +30,7 @@ $(document).ready(function () {
                 }, {
                     seriesType: "bar",
                     collectionAlias: "Vibration",
-                    data: [152, 234, 123, 348, 167, 283]
+                    data: [152, 234, 123, 348]
                 }, {
                     seriesType: "bar",
                     collectionAlias: "Temperature",
