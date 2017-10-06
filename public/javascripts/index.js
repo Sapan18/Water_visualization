@@ -186,7 +186,7 @@ $(document).ready(function () {
 			}
 			else {
 				var obj = JSON.parse(message.data);
-				if(!obj.timeOfReading || !obj.ReceiveTime || !obj.Parameters[0].Value || !obj.Parameters[1].Value || !obj.Parameters[2].Value || !obj.Parameters[3].Value || !obj.Parameters[4].Value) {
+				if(!obj.internalTemperature || !obj.ReceiveTime || !obj.Parameters[0].Value || !obj.Parameters[1].Value || !obj.Parameters[2].Value || !obj.Parameters[3].Value || !obj.Parameters[4].Value) {
 					return;
 				}
 				
@@ -257,7 +257,7 @@ $(document).ready(function () {
 				}
 				
 				//Setting label values
-				$("#label1").html(maxAvgTemp);
+				$("#label1").html(obj.internalTemperature);
 				$("#label2").html(maxDiff);
 				$("#label4").html(noOfTestFailed);
 				
