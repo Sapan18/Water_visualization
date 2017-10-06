@@ -2,9 +2,57 @@ $(document).ready(function () {
 	
 	//variables declaration
 	var tableData=[], tableDataReverse=[];
-	
-	
 			
+	$("#grid").shieldGrid({
+            dataSource: {
+				data: tableDataReverse
+			},
+			rowHover: false,			
+            scrolling: {
+                virtual: true
+            },
+            sorting: true,
+            columnReorder: true,
+            columns: [
+                { field: "key", title: "Key" },
+                { field: "value", title: "Value" }
+            ]
+        });
+			
+	//styling table (assigning red/green colour)
+	function gridDataBound(e) {
+		var data = e.target.dataSource.view;
+		var rows = e.target.contentTable.find(">tbody>tr");
+		for (var i = 0; i < data.length; i++) {
+            var item = data[i];
+            if (item.message == thresholdMsg) {
+                $(rows[i].cells[3]).addClass("red");
+            }
+            if (item.message == msg) {
+                $(rows[i].cells[3]).addClass("green");
+            }
+        }
+    }
+		
+	if(tableData.length == 5){
+						for(var i=0; i<(tableData.length)-1; i++){
+							tableData[i]= tableData[i+1];
+						}
+						tableData[4]={
+							key: "internalTemperature",
+							value: "128"
+						};
+					}
+					else{
+						tableData.push({
+							key: "internalTemperature",
+							value: "128"
+						});
+					}	
+					
+		tableDataReverse = tableData.slice(0);
+		tableDataReverse.reverse();
+		
 		
 	//websocket connection
 	var ws = new WebSocket('wss://' + location.host);
@@ -18,8 +66,7 @@ $(document).ready(function () {
 		console.log('Receive message via websocket in client side: ' + message.data);
 		try {
 			var obj = JSON.parse(message.data);
-						
-						
+			
 			$("#chart").shieldChart({
                 theme: "light",
                 exportOptions: {
@@ -46,7 +93,7 @@ $(document).ready(function () {
                 dataSeries: [{
                     seriesType: "bar",
                     collectionAlias: "Pressure",
-                    data: [parseInt(obj.pressure[0].Value, 5), 400, 743, 503, 702, 383]
+                    data: [parseInt(obj.pressure[0][0], 5), parseInt(obj.pressure[0][1], 5), 743, 503, 702, 383]
                 }, {
                     seriesType: "bar",
                     collectionAlias: "Temperature",
@@ -58,7 +105,40 @@ $(document).ready(function () {
                 }]
             });
 						
+						tableData.push({
+							key: "Time of reading",
+							value: obj.timeOfReading
+						});
+						tableData.push({
+							key: "Internal temperature",
+							value: obj.internalTemperature
+						});
+						tableData.push({
+							key: "Daily flow",
+							value: obj.dailyFlow
+						});
+						tableData.push({
+							key: "Daily reverse flow",
+							value: obj.dailyReverseFlow
+						});
+						tableData.push({
+							key: "Peak flow rate",
+							value: obj.peakFlowRate
+						});
+						tableData.push({
+							key: "Peak flow rate time",
+							value: obj.peakFlowRateTime
+						});
+						tableData.push({
+							key: "Event time",
+							value: obj.eventTime
+						});
+						
+					
+			tableDataReverse = tableData.slice(0);
+			tableDataReverse.reverse();
 		
+			//refreshGird();
 			}
 		catch (err) {
 		  console.error(err);
