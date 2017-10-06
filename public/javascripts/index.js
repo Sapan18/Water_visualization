@@ -100,5 +100,58 @@ $(document).ready(function () {
 					
 		tableDataReverse = tableData.slice(0);
 		tableDataReverse.reverse();
+		
+		
+	//websocket connection
+	var ws = new WebSocket('wss://' + location.host);
 	
+	ws.onopen = function () {
+		console.log('Successfully connect WebSocket');
+	}
+	
+	//websocket receiving messages
+	ws.onmessage = function (message) {
+		console.log('Receive message via websocket in client side: ' + message.data);
+		try {
+			var obj = JSON.parse(message.data);
+						
+						tableData.push({
+							key: "Time of reading",
+							value: obj.timeOfReading
+						});
+						tableData.push({
+							key: "Internal temperature",
+							value: obj.internalTemperature
+						});
+						tableData.push({
+							key: "Daily flow",
+							value: obj.dailyFlow
+						});
+						tableData.push({
+							key: "Daily reverse flow",
+							value: obj.dailyReverseFlow
+						});
+						tableData.push({
+							key: "Peak flow rate",
+							value: obj.peakFlowRate
+						});
+						tableData.push({
+							key: "Peak flow rate time",
+							value: obj.peakFlowRateTime
+						});
+						tableData.push({
+							key: "Event time",
+							value: obj.eventTime
+						});
+						
+					
+			tableDataReverse = tableData.slice(0);
+			tableDataReverse.reverse();
+		
+			refreshGird();
+			}
+		catch (err) {
+		  console.error(err);
+		}
+	}
 });
