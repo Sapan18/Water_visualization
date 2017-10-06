@@ -7,7 +7,7 @@ $(document).ready(function () {
                     print: false
                 },
                 primaryHeader: {
-                    text: "Internet usage statistics"
+                    text: "Pressure, vibration and termperature statistics over six interval"
                 },
                 zoomMode: "xy",
                 seriesSettings: {
@@ -16,21 +16,25 @@ $(document).ready(function () {
                     }
                 },
                 axisX: {
-                    categoricalValues: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+                    categoricalValues: ["1st", "2nd", "3rd", "4th", "5th", "6th"]
                 },
                 axisY: {
                     title: {
-                        text: "Visitor statistics"
+                        text: "Value statistics"
                     }
                 },
                 dataSeries: [{
                     seriesType: "bar",
-                    collectionAlias: "Total Visits",
-                    data: [565000, 630400, 743000, 910200, 1170200, 1383000]
+                    collectionAlias: "Pressure",
+                    data: [630, 400, 743, 503, 702, 383]
                 }, {
                     seriesType: "bar",
-                    collectionAlias: "Unique Visits",
-                    data: [152000, 234000, 123000, 348000, 167000, 283000]
+                    collectionAlias: "Vibration",
+                    data: [152, 234, 123, 348, 167, 283]
+                }, {
+                    seriesType: "bar",
+                    collectionAlias: "Temperature",
+                    data: [72, 90, 84, 78, 67, 83]
                 }]
             });
 });
