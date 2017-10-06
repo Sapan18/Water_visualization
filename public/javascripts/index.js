@@ -54,22 +54,9 @@ $(document).ready(function () {
                 virtual: true
             },
             sorting: true,
-            columnReorder: true,
-            columns: [
-                { field: "key", title: "Key" },
-                { field: "value", title: "Value" }
-            ]
+            columnReorder: true,            
         });
-		
-	//updating table (live)
-    function refreshGird() {
-        var grid = $("#grid").swidget(),
-            initialOptions = grid.initialOptions;
-        initialOptions.dataSource = {
-            data: tableDataReverse
-        };
-        grid.refresh(initialOptions);
-    }
+			
 			
 	//styling table (assigning red/green colour)
 	function gridDataBound(e) {
@@ -77,12 +64,11 @@ $(document).ready(function () {
 		var rows = e.target.contentTable.find(">tbody>tr");
 		for (var i = 0; i < data.length; i++) {
             var item = data[i];
-            if (item.message == thresholdMsg) {
-                $(rows[i].cells[3]).addClass("red");
-            }
-            if (item.message == msg) {
+            if (item.key) {
                 $(rows[i].cells[3]).addClass("green");
-            }
+            }else            
+                $(rows[i].cells[3]).addClass("red");
+            
         }
     }
 		
@@ -170,7 +156,7 @@ $(document).ready(function () {
 					
 			tableDataReverse = tableData.slice(0);		
 
-
+			
 			$("#grid").shieldGrid({
             dataSource: {
 				data: tableDataReverse
@@ -188,9 +174,8 @@ $(document).ready(function () {
                 { field: "key", title: "Key" },
                 { field: "value", title: "Value" }
             ]
-			});
-		
-			//refreshGird();
+			});	
+			
 			}
 		catch (err) {
 		  console.error(err);
