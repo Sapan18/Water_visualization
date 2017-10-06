@@ -93,7 +93,7 @@ $(document).ready(function () {
                 dataSeries: [{
                     seriesType: "bar",
                     collectionAlias: "Pressure",
-                    data: [parseInt(obj.pressure[0].Value, 5), parseInt(obj.pressure[0].Value, 5), 743, 503, 702, 383]
+                    data: [parseInt(obj.pressure[0].Value, 5), parseInt(obj.pressure[1].Value, 5), parseInt(obj.pressure[2].Value, 5), parseInt(obj.pressure[3].Value, 5), parseInt(obj.pressure[4].Value, 5), parseInt(obj.pressure[5].Value, 5)]
                 }, {
                     seriesType: "bar",
                     collectionAlias: "Temperature",
