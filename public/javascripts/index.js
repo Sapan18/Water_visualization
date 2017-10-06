@@ -42,24 +42,7 @@ $(document).ready(function () {
                 }]
             });
 	
-	$("#grid").shieldGrid({
-            dataSource: {
-				data: tableDataReverse
-			},
-			events: {
-                dataBound: gridDataBound
-            },
-			rowHover: false,			
-            scrolling: {
-                virtual: true
-            },
-            sorting: true,
-            columnReorder: true,
-            columns: [
-                { field: "key", title: "Firstkey" },
-                { field: "value", title: "FirstValue" }
-            ]
-        });
+	
 			
 			
 	//styling table (assigning red/green colour)
@@ -160,8 +143,14 @@ $(document).ready(function () {
 					
 			tableDataReverse = tableData.slice(0);		
 
-			$("#grid").remove();
-			$("#grid").shieldGrid({
+			
+			
+		catch (err) {
+		  console.error(err);
+		}
+	}
+	
+	$("#grid").shieldGrid({
             dataSource: {
 				data: tableDataReverse
 			},
@@ -181,8 +170,4 @@ $(document).ready(function () {
 			});	
 			
 			}
-		catch (err) {
-		  console.error(err);
-		}
-	}
 });
