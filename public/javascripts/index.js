@@ -42,9 +42,21 @@ $(document).ready(function () {
                 }]
             });
 	
-	
-	
-			
+	$("#grid").shieldGrid({
+            dataSource: {
+				data: tableDataReverse
+			},
+			rowHover: false,			
+            scrolling: {
+                virtual: true
+            },
+            sorting: true,
+            columnReorder: true,
+            columns: [
+                { field: "key", title: "Key" },
+                { field: "value", title: "Value" }
+            ]
+        });
 			
 	//styling table (assigning red/green colour)
 	function gridDataBound(e) {
@@ -52,11 +64,12 @@ $(document).ready(function () {
 		var rows = e.target.contentTable.find(">tbody>tr");
 		for (var i = 0; i < data.length; i++) {
             var item = data[i];
-            if (item.key) {
-                $(rows[i].cells[3]).addClass("green");
-            }else            
+            if (item.message == thresholdMsg) {
                 $(rows[i].cells[3]).addClass("red");
-            
+            }
+            if (item.message == msg) {
+                $(rows[i].cells[3]).addClass("green");
+            }
         }
     }
 		
@@ -142,11 +155,10 @@ $(document).ready(function () {
 						});
 						
 					
-			tableDataReverse = tableData.slice(0);		
-
-			
-			
-			
+			tableDataReverse = tableData.slice(0);
+			tableDataReverse.reverse();
+		
+			//refreshGird();
 			}
 		catch (err) {
 		  console.error(err);
