@@ -52,7 +52,7 @@ $(document).ready(function () {
             },
             sorting: true,
             columnReorder: true,
-            columns: []
+			columns: [{field: "key", title: "End of Grid"}]
         });
 		
 		
@@ -66,32 +66,6 @@ $(document).ready(function () {
         grid.refresh(initialOptions);
     }
 			
-	//Axis marker for interval flow   
-        $("#line").shieldChart({
-            theme: "light",
-            primaryHeader: {
-                text: "Interval Flow"
-            },
-            exportOptions: {
-                image: false,
-                print: false
-            },
-            axisX: {
-                categoricalValues: []
-            },
-            tooltipSettings: {
-                chartBound: true,
-                axisMarkers: {
-                    enabled: true,
-                    mode: 'xy'
-                }                    
-            },
-            dataSeries: [{
-                seriesType: 'area',
-                collectionAlias: "Budget in Thousands",
-                data: []
-            }]
-        });
 	
 	//styling table (assigning red/green colour)
 	function gridDataBound(e) {
@@ -221,7 +195,7 @@ $(document).ready(function () {
 		
 			//refreshGird();
 			
-			/* $("#grid").shieldGrid({
+			$("#grid").shieldGrid({
             dataSource: {
 				data: tableDataReverse
 			},
@@ -235,7 +209,7 @@ $(document).ready(function () {
                 { field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
                 { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
             ]
-			}); */
+			});
 			
 			refreshGird();
 			}
