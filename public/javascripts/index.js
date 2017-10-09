@@ -59,6 +59,16 @@ $(document).ready(function () {
 			});	
 			
 			
+	//updating table (live)
+    function refreshGird() {
+        var grid = $("#grid").swidget(),
+            initialOptions = grid.initialOptions;
+        initialOptions.dataSource = {
+            data: tableDataReverse
+        };
+        grid.refresh(initialOptions);
+    }
+	
 	//styling table (assigning red/green colour)
 	function gridDataBound(e) {
 		var data = e.target.dataSource.view;
@@ -158,7 +168,7 @@ $(document).ready(function () {
 			tableDataReverse = tableData.slice(0);		
 
 			
-			
+			refreshGird();
 			
 			}
 		catch (err) {
