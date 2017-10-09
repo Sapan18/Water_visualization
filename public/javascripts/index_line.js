@@ -7,7 +7,7 @@ var tableData=[], tableDataReverse=[];
 
 //Axis marker for interval flow
     $(document).ready(function () {
-        $("#chart").shieldChart({
+        $("#line").shieldChart({
             theme: "light",
             primaryHeader: {
                 text: "Interval Flow"
