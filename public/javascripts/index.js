@@ -42,7 +42,7 @@ $(document).ready(function () {
                 }]
             });
 	
-	$("#grid").shieldGrid({
+	/* $("#grid").shieldGrid({
             dataSource: {
 				data: tableDataReverse
 			},
@@ -56,7 +56,7 @@ $(document).ready(function () {
                 { field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
                 { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
             ]
-        });
+        }); */
 			
 	//Axis marker for interval flow   
         $("#line").shieldChart({
