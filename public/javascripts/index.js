@@ -52,9 +52,36 @@ $(document).ready(function () {
             },
             sorting: true,
             columnReorder: true,
-			columns: [{field: "key", title: "End of Grid"}]
+			columns: [{ field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+                { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}]
         });
-		
+        
+    //Axis marker for interval flow   
+	$("#line").shieldChart({
+            theme: "light",
+            primaryHeader: {
+                text: "Interval Flow"
+            },
+            exportOptions: {
+                image: false,
+                print: false
+            },
+            axisX: {
+                categoricalValues: []
+            },
+            tooltipSettings: {
+                chartBound: true,
+                axisMarkers: {
+                    enabled: true,
+                    mode: 'xy'
+                }                    
+            },
+            dataSeries: [{
+                seriesType: 'area',
+                collectionAlias: "Budget in Thousands",
+                data: []
+            }]
+        });
 		
 	//updating table (live)
     function refreshGird() {
@@ -82,7 +109,53 @@ $(document).ready(function () {
         }
     }
 		
-		
+    //data for line chart
+	var data = {
+		labels: timeData,
+		datasets: [
+		{
+			fill: false,
+			label: 'Water Reading',
+			yAxisID: 'WaterData',
+			borderColor: "rgba(255, 204, 0, 1)",
+			pointBoarderColor: "rgba(255, 204, 0, 1)",
+			backgroundColor: "rgba(255, 204, 0, 0.4)",
+			pointHoverBackgroundColor: "rgba(255, 204, 0, 1)",
+			pointHoverBorderColor: "rgba(255, 204, 0, 1)",
+			data: waterData
+		}
+		]
+    }
+    
+    //options for line chart
+	var basicOption = {
+		title: {
+			display: true,
+			text: 'Flash Test Live Water Data',
+			fontSize: 36
+		},
+		scales: {
+			yAxes: [{
+				id: 'WaterData',
+				type: 'linear',
+				scaleLabel: {
+					labelString: 'Water Interval',
+					display: true
+				},
+				position: 'left',
+			}]
+		}
+	}
+    
+    //Get the context of the canvas element for line chart
+	var ctx = document.getElementById("myChart").getContext("2d");
+	var optionsNoAnimation = { animation: false }
+	var myLineChart = new Chart(ctx, {
+		type: 'line',
+		data: data,
+		options: basicOption
+	});
+
 	//websocket connection
 	var ws = new WebSocket('wss://' + location.host);
 	
@@ -209,8 +282,20 @@ $(document).ready(function () {
                 { field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
                 { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
             ]
-			});
-			
+            });
+        
+            timeData.push(obj.timeOfReading);
+            waterData = parseFloat(obj.water[0].Value);
+            
+            // only keep no more than 50 points in the line chart
+				var len = timeData.length;
+				if (len > 50) {
+                    timeData.shift();			
+                    waterData.shift();		
+                }
+                
+            //Update line & pie chart with new received values
+				myLineChart.update();
 			refreshGird();
 			}
 		catch (err) {
