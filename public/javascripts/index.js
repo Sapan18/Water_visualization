@@ -284,12 +284,12 @@ $(document).ready(function () {
             ]
             });
         
-            timeData.push(obj.timeOfReading);
+            timeData.push(obj.currentTime);
             waterData.push(parseFloat(obj.water[0].Value));
             
             // only keep no more than 50 points in the line chart
 				var len = timeData.length;
-				if (len > 50) {
+				if (len > 100) {
                     timeData.shift();			
                     waterData.shift();		
                 }
