@@ -54,7 +54,7 @@ $(document).ready(function () {
             columnReorder: true,
             columns: [
                 { field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
-                { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px; padding-Top:10px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
+                { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
             ]
         });
 			
@@ -208,9 +208,27 @@ $(document).ready(function () {
             }]
         });
 						
-					
+								
 			tableDataReverse = tableData.slice(0);
 		
+			//refreshGird();
+			
+			$("#grid").shieldGrid({
+            dataSource: {
+				data: tableDataReverse
+			},
+			rowHover: false,			
+            scrolling: {
+                virtual: true
+            },
+            sorting: true,
+            columnReorder: true,
+            columns: [
+                { field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+                { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
+            ]
+			});
+			
 			refreshGird();
 			}
 		catch (err) {
