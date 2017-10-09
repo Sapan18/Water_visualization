@@ -49,7 +49,10 @@ $(document).ready(function () {
 			rowHover: false,			
             scrolling: {
                 virtual: true
-            },
+            },			
+			events: {
+            dataBound: gridDataBound
+			},
             sorting: true,
             columnReorder: true,
             columns: [
