@@ -42,21 +42,8 @@ $(document).ready(function () {
                 }]
             });
 	
-	$("#grid").shieldGrid({
-            dataSource: {
-				data: tableDataReverse
-			},
-			rowHover: false,			
-            scrolling: {
-                virtual: true
-            },
-            sorting: true,
-            columnReorder: true,
-            columns: [
-                { field: "key", title: "Key" },
-                { field: "value", title: "Value" }
-            ]
-			});	
+	
+	
 			
 			
 	//styling table (assigning red/green colour)
