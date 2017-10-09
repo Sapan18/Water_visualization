@@ -42,7 +42,7 @@ $(document).ready(function () {
                 }]
             });
 	
-	/* $("#grid").shieldGrid({
+	$("#grid").shieldGrid({
             dataSource: {
 				data: tableDataReverse
 			},
@@ -56,7 +56,18 @@ $(document).ready(function () {
                 { field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
                 { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
             ]
-        }); */
+        });
+		
+		
+	//updating table (live)
+    function refreshGird() {
+        var grid = $("#grid").swidget(),
+            initialOptions = grid.initialOptions;
+        initialOptions.dataSource = {
+            data: tableDataReverse
+        };
+        grid.refresh(initialOptions);
+    }
 			
 	//Axis marker for interval flow   
         $("#line").shieldChart({
@@ -213,7 +224,7 @@ $(document).ready(function () {
 		
 			//refreshGird();
 			
-			$("#grid").shieldGrid({
+			/* $("#grid").shieldGrid({
             dataSource: {
 				data: tableDataReverse
 			},
@@ -227,7 +238,7 @@ $(document).ready(function () {
                 { field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
                 { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
             ]
-			});
+			}); */
 			
 			refreshGird();
 			}
