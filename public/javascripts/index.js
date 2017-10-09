@@ -43,15 +43,20 @@ $(document).ready(function () {
             });
 	
 	$("#grid").shieldGrid({
-		rowHover: false,			
+            dataSource: {
+				data: tableDataReverse
+			},
+			rowHover: false,			
             scrolling: {
                 virtual: true
             },
             sorting: true,
             columnReorder: true,
-			columns: [          
+            columns: [
+                { field: "key", title: "Key" },
+                { field: "value", title: "Value" }
             ]
-	})
+			});	
 			
 			
 	//styling table (assigning red/green colour)
@@ -153,21 +158,7 @@ $(document).ready(function () {
 			tableDataReverse = tableData.slice(0);		
 
 			
-			$("#grid").shieldGrid({
-            dataSource: {
-				data: tableDataReverse
-			},
-			rowHover: false,			
-            scrolling: {
-                virtual: true
-            },
-            sorting: true,
-            columnReorder: true,
-            columns: [
-                { field: "key", title: "Key" },
-                { field: "value", title: "Value" }
-            ]
-			});	
+			
 			
 			}
 		catch (err) {
