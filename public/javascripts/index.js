@@ -286,6 +286,10 @@ $(document).ready(function () {
         
             timeData.push(obj.currentTime);
             waterData.push(parseFloat(obj.water[0].Value));
+             waterData.push(parseFloat(obj.water[1].Value));
+              waterData.push(parseFloat(obj.water[2].Value));
+               waterData.push(parseFloat(obj.water[3].Value));
+                waterData.push(parseFloat(obj.water[4].Value));
             
             // only keep no more than 50 points in the line chart
 				var len = timeData.length;
