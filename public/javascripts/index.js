@@ -1,8 +1,9 @@
 $(document).ready(function () {
 	
 	//variables declaration
-	var tableData=[], tableDataReverse=[]; timeData = []; waterData=[];
-	
+    var tableData=[], tableDataReverse=[]; timeData = []; waterData=[];
+    var flag1=1;
+    
 	//Display empty chart initially
 	$("#chart").shieldChart({
                 theme: "light",
@@ -143,7 +144,8 @@ $(document).ready(function () {
 		console.log('Receive message via websocket in client side: ' + message.data);
 		try {
 			var obj = JSON.parse(message.data);
-			
+            
+            if(flag1==1){
 			$("#chart").shieldChart({
                 theme: "light",
                 exportOptions: {
@@ -181,7 +183,7 @@ $(document).ready(function () {
                     data: [parseInt(obj.vibration[0].Value), parseInt(obj.vibration[1].Value), parseInt(obj.vibration[2].Value), parseInt(obj.vibration[3].Value)]
                 }]
             });
-						
+            		
 						tableData.push({
 							key: "Time of reading",
 							value: obj.timeOfReading
@@ -231,7 +233,9 @@ $(document).ready(function () {
                 { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
             ]
             });
-        
+            refreshGird();
+            flag1=2;
+            }
             timeData.push(obj.currentTime);
             waterData.push(parseFloat(obj.water[0].Value));
              waterData.push(parseFloat(obj.water[1].Value));
@@ -248,7 +252,7 @@ $(document).ready(function () {
                 
             //Update line & pie chart with new received values
 				myLineChart.update();
-			refreshGird();
+			
 			}
 		catch (err) {
 		  console.error(err);
