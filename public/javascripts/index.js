@@ -285,7 +285,7 @@ $(document).ready(function () {
             });
         
             timeData.push(obj.timeOfReading);
-            waterData = parseFloat(obj.water[0].Value);
+            waterData.push(parseFloat(obj.water[0].Value));
             
             // only keep no more than 50 points in the line chart
 				var len = timeData.length;
