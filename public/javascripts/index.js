@@ -53,8 +53,8 @@ $(document).ready(function () {
             sorting: true,
             columnReorder: true,
             columns: [
-                { field: "key", title: "Key" attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
-                { field: "value", title: "Value" attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
+                { field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+                { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px; padding-Top:10px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
             ]
         });
 			
