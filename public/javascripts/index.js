@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	
 	//variables declaration
-	var tableData=[], tableDataReverse=[];
+	var tableData=[], tableDataReverse=[]; timeData = []; waterData=[];
 	
 	//Display empty chart initially
 	$("#chart").shieldChart({
