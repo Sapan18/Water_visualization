@@ -307,6 +307,7 @@ $(document).ready(function () {
             });
             refreshGird();
             flag1=false;
+             $("#grid").swidget().refresh;
             }
             timeData.push(obj.currentTime);
             waterData.push(parseFloat(obj.water[0].Value));             
