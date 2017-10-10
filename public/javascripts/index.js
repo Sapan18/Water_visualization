@@ -54,7 +54,7 @@ $(document).ready(function () {
             },
             sorting: true,
             columnReorder: true,
-			columns: [{ field: "key1", title: "End of", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+			columns: [{ field: "key1", title: "Sample", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
                 { field: "value1", title: "Table", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}]
         });
             
@@ -307,7 +307,8 @@ $(document).ready(function () {
                 { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
             ]
             });
-            
+            $("#grid").swidget().hideColumn("key1");
+            $("#grid").swidget().hideColumn("value1");
             flag1=false;
             
             }
