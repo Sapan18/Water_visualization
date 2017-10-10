@@ -42,7 +42,7 @@ $(document).ready(function () {
                     data: [0, 0, 0, 0]
                 }]
             });
-    /*
+    
     //Create grid
 	$("#grid").shieldGrid({
             dataSource: {
@@ -57,7 +57,7 @@ $(document).ready(function () {
 			columns: [{ field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
                 { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}]
         });
-            */
+            
         
     
 		
