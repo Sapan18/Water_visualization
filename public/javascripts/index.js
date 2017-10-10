@@ -54,6 +54,7 @@ $(document).ready(function () {
             },
             sorting: true,
             columnReorder: true,
+            height: 0,
 			columns: [{ field: "key1", title: "End of", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
                 { field: "value1", title: "Table", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}]
         });	
