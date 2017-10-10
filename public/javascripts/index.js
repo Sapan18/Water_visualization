@@ -91,7 +91,7 @@ $(document).ready(function () {
 		datasets: [
 		{
 			fill: false,
-			label: 'Water Reading',
+			label: 'Water Meter Reading',
 			yAxisID: 'WaterData',
 			borderColor: "rgba(255, 204, 0, 1)",
 			pointBoarderColor: "rgba(255, 204, 0, 1)",
@@ -107,7 +107,7 @@ $(document).ready(function () {
 	var basicOption = {
 		title: {
 			display: true,
-			text: 'Flash Test Live Water Data',
+			text: 'Live Water Data',
 			fontSize: 36
 		},
 		scales: {
@@ -115,7 +115,7 @@ $(document).ready(function () {
 				id: 'WaterData',
 				type: 'linear',
 				scaleLabel: {
-					labelString: 'Water Interval',
+					labelString: 'Water reading',
 					display: true
 				},
 				position: 'left',
@@ -288,7 +288,7 @@ $(document).ready(function () {
 								
 			tableDataReverse = tableData.slice(0);
 		
-			//refreshGird();
+			refreshGird();
 			
 			$("#grid").shieldGrid({
             dataSource: {
