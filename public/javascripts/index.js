@@ -208,7 +208,8 @@ $(document).ready(function () {
 							key: "Peak flow rate time",
 							value: obj.peakFlowRateTime
 						});
-						tableData.push({
+                        /*
+                        tableData.push({
 							key: "Low Flow Alarm",
 							value: obj.lowFlowAlarm
                         });
@@ -279,7 +280,7 @@ $(document).ready(function () {
                         tableData.push({
 							key: "Inner Temprature Sensor Fault",
 							value: obj.innerTempratureSensorFault
-                        });                        
+                        });          */              
 					
 								
 			tableDataReverse = tableData.slice(0);
