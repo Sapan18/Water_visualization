@@ -42,7 +42,8 @@ $(document).ready(function () {
                     data: [0, 0, 0, 0]
                 }]
             });
-	
+    
+    //Create grid
 	$("#grid").shieldGrid({
             dataSource: {
 				data: tableDataReverse
@@ -62,11 +63,11 @@ $(document).ready(function () {
 	//updating table (live)
     function refreshGird() {
         var grid = $("#grid").swidget(),
-            initialOptions = grid.initialOptions;
-        initialOptions.dataSource = {
+            options  = grid.initialOptions;
+        options.dataSource = {
             data: tableDataReverse
         };
-        grid.refresh(initialOptions);
+        grid.refresh(options);
     }
 			
 	
@@ -288,7 +289,7 @@ $(document).ready(function () {
 								
 			tableDataReverse = tableData.slice(0);
 		
-			refreshGird();
+			
 			
 			$("#grid").shieldGrid({
             dataSource: {
@@ -305,7 +306,7 @@ $(document).ready(function () {
                 { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
             ]
             });
-            refreshGird();
+            
             flag1=false;
              $("#grid").swidget().refresh;
             }
