@@ -62,11 +62,11 @@ $(document).ready(function () {
 	//updating table (live)
     function refreshGird() {
         var grid = $("#grid").swidget(),
-            options  = grid.initialOptions;
-        options.dataSource = {
+            initialOptions = grid.initialOptions;
+        initialOptions.dataSource = {
             data: tableDataReverse
         };
-        grid.refresh(options);
+        grid.refresh(initialOptions);
     }
 			
 	
