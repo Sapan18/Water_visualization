@@ -43,20 +43,7 @@ $(document).ready(function () {
                 }]
             });
     
-    //Create grid
-	$("#grid").shieldGrid({
-            dataSource: {
-				data: tableDataReverse
-			},
-			rowHover: false,			
-            scrolling: {
-                virtual: true
-            },
-            sorting: true,
-            columnReorder: true,
-			columns: [{ field: "key1", title: "Sample", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
-                { field: "value1", title: "Table", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}]
-        });
+    
             
         
     
