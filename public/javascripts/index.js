@@ -43,7 +43,6 @@ $(document).ready(function () {
                 }]
             });
     
-    function initializegrid(){
     //Create grid
 	$("#grid").shieldGrid({
             dataSource: {
@@ -55,10 +54,10 @@ $(document).ready(function () {
             },
             sorting: true,
             columnReorder: true,
-			columns: [{ field: "key1", title: "Sample", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+			columns: [{ field: "key1", title: "End of", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
                 { field: "value1", title: "Table", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}]
         });	
-    }
+    
     //updating table (live)
     function refreshGird() {
         var grid = $("#grid").swidget(),
@@ -272,11 +271,25 @@ $(document).ready(function () {
 					
 								
 			tableDataReverse = tableData.slice(0);
-                    
-            initializegrid();
+		
+			refreshGird();
 			
-			
-			
+			$("#grid").shieldGrid({
+            dataSource: {
+				data: tableDataReverse
+			},
+			rowHover: false,			
+            scrolling: {
+                virtual: true
+            },
+            sorting: true,
+            columnReorder: true,
+            height: 330,
+            columns: [
+                { field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+                { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
+            ]
+            });
             flag1=false;
             
             }
