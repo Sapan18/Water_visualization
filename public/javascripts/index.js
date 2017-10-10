@@ -309,12 +309,7 @@ $(document).ready(function () {
             });
             
             flag1=false;
-            var grid = $("#grid").swidget(),
-            options  = grid.initialOptions;
-            options.dataSource = {
-                data: tableDataReverse
-             };
-            grid.refresh(options);
+            
             }
             timeData.push(obj.currentTime);
             waterData.push(parseFloat(obj.water[0].Value));             
