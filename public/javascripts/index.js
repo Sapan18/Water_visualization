@@ -2,8 +2,8 @@ $(document).ready(function () {
 	
 	//variables declaration
     var tableData=[], tableDataReverse=[]; timeData = []; waterData=[];
-    var flag1=1;
-    
+    var flag1=true;
+
 	//Display empty chart initially
 	$("#chart").shieldChart({
                 theme: "light",
@@ -145,7 +145,7 @@ $(document).ready(function () {
 		try {
 			var obj = JSON.parse(message.data);
             
-            if(flag1==1){
+            if(flag1){
 			$("#chart").shieldChart({
                 theme: "light",
                 exportOptions: {
@@ -209,9 +209,77 @@ $(document).ready(function () {
 							value: obj.peakFlowRateTime
 						});
 						tableData.push({
-							key: "Event time",
-							value: obj.eventTime
-						});
+							key: "Low Flow Alarm",
+							value: obj.lowFlowAlarm
+                        });
+                        tableData.push({
+							key: "High Flow Alarm",
+							value: obj.highFlowAlarm
+                        });
+                        tableData.push({
+							key: "Tamper Alarm",
+							value: obj.tamperAlarm
+                        });
+                        tableData.push({
+							key: "Low Battery Alarm",
+							value: obj.lowBatteryAlarm
+                        });
+                        tableData.push({
+							key: "Battery Run Out Alarm",
+							value: obj.batteryRunOutAlarm
+                        });
+                        tableData.push({
+							key: "High Internal Temperature",
+							value: obj.highInternalTemperature
+                        });
+                        tableData.push({
+							key: "Reverse Flow Alarm",
+							value: obj.reverseFlowAlarm
+                        });
+                        tableData.push({
+							key: "High Pressure Alarm",
+							value: obj.highPressureAlarm
+                        });
+                        tableData.push({
+							key: "Low Pressure Alarm",
+							value: obj.lowPressureAlarm
+                        });
+                        tableData.push({
+							key: "High Temperature Alarm",
+							value: obj.highTemperatureAlarm
+                        });
+                        tableData.push({
+							key: "Low Temperature Alarm",
+							value: obj.lowTemperatureAlarm
+                        });
+                        tableData.push({
+							key: "Inner Error Alarm",
+							value: obj.innerErrorAlarm
+                        });
+                        tableData.push({
+							key: "Storage Fault",
+							value: obj.storageFault
+                        });
+                        tableData.push({
+							key: "Water Temprature Sensor Fault",
+							value: obj.waterTempratureSensorFault
+                        });
+                        tableData.push({
+							key: "Pressure Sensor Fault",
+							value: obj.pressureSensorFault
+                        });
+                        tableData.push({
+							key: "Vibration Sensor Fault",
+							value: obj.vibrationSensorFault
+                        });
+                        tableData.push({
+							key: "Stray Current",
+							value: obj.strayCurrent
+                        });
+                        tableData.push({
+							key: "Inner Temprature Sensor Fault",
+							value: obj.innerTempratureSensorFault
+                        });                        
 					
 								
 			tableDataReverse = tableData.slice(0);
@@ -234,7 +302,7 @@ $(document).ready(function () {
             ]
             });
             refreshGird();
-            flag1=2;
+            flag1=false;
             }
             timeData.push(obj.currentTime);
             waterData.push(parseFloat(obj.water[0].Value));
