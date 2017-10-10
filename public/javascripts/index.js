@@ -45,7 +45,7 @@ $(document).ready(function () {
 	
 	$("#grid").shieldGrid({
             dataSource: {
-				data: tableDataReverse
+				data: tableData
 			},
 			rowHover: false,			
             scrolling: {
@@ -288,8 +288,8 @@ $(document).ready(function () {
 								
 			tableDataReverse = tableData.slice(0);
 		
-			refreshGird();
-			/*
+			
+			
 			$("#grid").shieldGrid({
             dataSource: {
 				data: tableDataReverse
@@ -305,7 +305,7 @@ $(document).ready(function () {
                 { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
             ]
             });
-            refreshGird(); */
+            refreshGird();
             flag1=false;
              $("#grid").swidget().refresh;
             }
