@@ -43,12 +43,23 @@ $(document).ready(function () {
                 }]
             });
     
-    
-            
-        
-    
-		
-	//updating table (live)
+    function initializegrid(){
+    //Create grid
+	$("#grid").shieldGrid({
+            dataSource: {
+				data: tableDataReverse
+			},
+			rowHover: false,			
+            scrolling: {
+                virtual: true
+            },
+            sorting: true,
+            columnReorder: true,
+			columns: [{ field: "key1", title: "Sample", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
+                { field: "value1", title: "Table", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}]
+        });	
+    }
+    //updating table (live)
     function refreshGird() {
         var grid = $("#grid").swidget(),
             options  = grid.initialOptions;
@@ -59,21 +70,6 @@ $(document).ready(function () {
     }
 			
 	
-	//styling table (assigning red/green colour)
-	function gridDataBound(e) {
-		var data = e.target.dataSource.view;
-		var rows = e.target.contentTable.find(">tbody>tr");
-		for (var i = 0; i < data.length; i++) {
-            var item = data[i];
-            if (item.message == thresholdMsg) {
-                $(rows[i].cells[3]).addClass("red");
-            }
-            if (item.message == msg) {
-                $(rows[i].cells[3]).addClass("green");
-            }
-        }
-    }
-		
     //data for line chart
 	var data = {
 		labels: timeData,
@@ -276,26 +272,11 @@ $(document).ready(function () {
 					
 								
 			tableDataReverse = tableData.slice(0);
-		
+                    
+            initializegrid();
 			
 			
-			$("#grid").shieldGrid({
-            dataSource: {
-				data: tableDataReverse
-			},
-			rowHover: false,			
-            scrolling: {
-                virtual: true
-            },
-            sorting: true,
-            columnReorder: true,
-            columns: [
-                { field: "key", title: "Key", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}},
-                { field: "value", title: "Value", attributes: {style: "text-align: center; font-size: 14px"}, headerAttributes: { style: "text-align: center; font-size: 16px"}}
-            ]
-            });
-            $("#grid").swidget().hideColumn("key1");
-            $("#grid").swidget().hideColumn("value1");
+			
             flag1=false;
             
             }
