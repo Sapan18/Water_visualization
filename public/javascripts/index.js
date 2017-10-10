@@ -2,7 +2,7 @@ $(document).ready(function () {
 	
 	//variables declaration
     var tableData=[], tableDataReverse=[]; timeData = []; waterData=[];
-    var flag1=1;
+    var flag1=true;
 
 	//Display empty chart initially
 	$("#chart").shieldChart({
@@ -145,7 +145,7 @@ $(document).ready(function () {
 		try {
 			var obj = JSON.parse(message.data);
             
-            if(flag1 == 1){
+            if(flag1){
 			$("#chart").shieldChart({
                 theme: "light",
                 exportOptions: {
@@ -211,8 +211,7 @@ $(document).ready(function () {
                         tableData.push({
 							key: "Event time",
 							value: obj.eventTime
-						});
-                        /*
+						});                        
                         tableData.push({
 							key: "Low Flow Alarm",
 							value: obj.lowFlowAlarm
@@ -284,7 +283,7 @@ $(document).ready(function () {
                         tableData.push({
 							key: "Inner Temprature Sensor Fault",
 							value: obj.innerTempratureSensorFault
-                        });          */              
+                        });                
 					
 								
 			tableDataReverse = tableData.slice(0);
@@ -307,14 +306,10 @@ $(document).ready(function () {
             ]
             });
             refreshGird();
-            flag1=2;
+            flag1=false;
             }
             timeData.push(obj.currentTime);
-            waterData.push(parseFloat(obj.water[0].Value));
-             waterData.push(parseFloat(obj.water[1].Value));
-              waterData.push(parseFloat(obj.water[2].Value));
-               waterData.push(parseFloat(obj.water[3].Value));
-                waterData.push(parseFloat(obj.water[4].Value));
+            waterData.push(parseFloat(obj.water[0].Value));             
             
             // only keep no more than 50 points in the line chart
 				var len = timeData.length;
